@@ -9,7 +9,15 @@ var httpha = require('../');
 
 describe('httpha interface', function () {
 
-  it('', function () {
+  it('should_basic_api_works_fine', function (done) {
+    var _me = httpha.create();
+    _me.addserver('www.baidu.com', '80');
+    _me.fetch().should.eql({
+      'hostname' : 'www.baidu.com',
+      'port' : 80,
+    });
+
+    setTimeout(done, 1000);
   });
 
 });

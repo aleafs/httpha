@@ -1,0 +1,39 @@
+{
+  "name": "httpha",
+  "description": "",
+  "keywords": [ "system", "infomation", "usage" ],
+  "version": "0.0.1",
+  "author": "Aleafs Zhang (zhangxc83@gmail.com)",
+  "repository": { 
+    "type": "git", 
+    "url": "git@github.com:aleafs/httpha.git"
+  },
+  "homepage": "https://github.com/aleafs/httpha",
+  "contributors": [
+  ],
+  "dependencies": {
+  },
+  "engines": {
+    "node": ">=0.8.14"
+  },
+  "devDependencies": {
+    "should"  : ">=0.6.3",
+    "mocha"   : ">=1.0.3",
+    "mm" : "*",
+    "blanket": "*",
+    "coveralls" : "*",
+    "travis-cov": "*",
+    "jshint" : "*",
+    "mocha-lcov-reporter": "*"
+  },
+  "scripts": {
+    "main"  : "index.js",
+    "test"  : "make test",
+    "blanket": {
+      "pattern": ["/httpha/lib"]
+    },
+    "travis-cov": {
+      "threshold": 95
+    }
+  }
+}

@@ -4,10 +4,18 @@
 
 "use strict";
 
+var http = require('http');
 var should = require('should');
 var httpha = require('../');
 
 describe('httpha interface', function () {
+
+  var S = http.createServer(function (req, res) {
+  });
+
+  before(function (done) {
+    done();
+  });
 
   it('should_basic_api_works_fine', function (done) {
     var _me = httpha.create();

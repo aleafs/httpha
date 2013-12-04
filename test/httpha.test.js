@@ -86,11 +86,42 @@ describe('http status checker', function () {
 
   it('should_http_status_checker_works_fine', function (done) {
 
-    var _fn = httpha.httpStatusChecker('status', 20);
-    _fn({'hostname' : '127.0.0.1', 'port' : P}, function (err, yes) {
+    /* {{{ function wait() */
+    var all = {};
+    var wait = function (idx, cb) {
+      all[idx] = true;
+      
+      var _fn = httpha.httpStatusChecker(idx, 20);
+      _fn({'hostname' : '127.0.0.1', 'port' : P}, function (err, yes) {
+        cb(err, yes);
+        all[idx] = null;
+
+        process.nextTick(function () {
+          for (var i in all) {
+            if (all[i]) {
+              return;
+            }
+          }
+          done();
+        });
+      });
+    };
+    /* }}} */
+
+    wait('status', function (err, yes) {
       should.ok(!err);
       yes.should.eql(true);
-      done();
+    });
+
+    wait('/timeout', function (err, yes) {
+      err.should.have.property('name', 'RequestTimeout');
+      err.message.should.eql('HeartBeat request "/timeout" timeout after 20ms');
+      should.ok(!yes);
+    });
+
+    wait('/404', function (err, yes) {
+      should.ok(!err);
+      yes.should.eql(false);
     });
   });
 });

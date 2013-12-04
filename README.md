@@ -3,7 +3,7 @@
 
 ## About
 
-`httpha`
+`httpha` is a simple client-side load balance and HA module.
 
 ## Usage
 
@@ -13,13 +13,16 @@ var httpha = require('httpha');
 
 var ha = httpha.create({
   'interval' : 1000,
-}, httpha.httpStatusChecker('/status', 1000));
+}, httpha.httpStatusChecker('/status', {
+  'timeout' : 1000,
+}));
 
 ha.add({'hostname' : '127.0.0.1', 'port' : 8080});
 ha.add({'hostname' : '127.0.0.2', 'port' : 8080});
 ha.add({'hostname' : '127.0.0.1', 'port' : 8081});
 
-ha.fetch();
+console.log(ha.fetch());
+console.log(ha.fetch());
 
 ```
 

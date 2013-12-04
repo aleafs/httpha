@@ -1,8 +1,8 @@
 {
   "name": "httpha",
-  "description": "",
-  "keywords": [ "system", "infomation", "usage" ],
-  "version": "0.0.1",
+  "description": "`httpha` is a simple client-side load balance and HA module.",
+  "keywords": [ "load balance", "high available", "HA", "client-side" ],
+  "version": "0.1.0",
   "author": "Aleafs Zhang (zhangxc83@gmail.com)",
   "repository": { 
     "type": "git", 

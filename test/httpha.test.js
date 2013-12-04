@@ -117,7 +117,9 @@ describe('http status checker', function () {
     var wait = function (idx, cb) {
       all[idx] = true;
       
-      var _fn = httpha.httpStatusChecker(idx, 20);
+      var _fn = httpha.httpStatusChecker(idx, {
+        'timeout' : 20,
+      });
       _fn({'hostname' : '127.0.0.1', 'port' : P}, function (err, yes) {
         cb(err, yes);
         all[idx] = null;

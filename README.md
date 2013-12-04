@@ -5,6 +5,24 @@
 
 `httpha`
 
+## Usage
+
+```javascript
+
+var httpha = require('httpha');
+
+var ha = httpha.create({
+  'interval' : 1000,
+}, httpha.httpStatusChecker('/status', 1000));
+
+ha.add({'hostname' : '127.0.0.1', 'port' : 8080});
+ha.add({'hostname' : '127.0.0.2', 'port' : 8080});
+ha.add({'hostname' : '127.0.0.1', 'port' : 8081});
+
+ha.fetch();
+
+```
+
 ## License
 
 MIT

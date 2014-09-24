@@ -23,7 +23,6 @@
     "blanket": "*",
     "coveralls" : "*",
     "travis-cov": "*",
-    "jshint" : "*",
     "mocha-lcov-reporter": "*"
   },
   "scripts": {

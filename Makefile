@@ -5,7 +5,7 @@ MOCHA_OPTS =
 
 init:
 	@npm install
-	@ln -s -f ../../pre-commit.sh .git/hooks/pre-commit
+	@ln -s -f ./pre-commit.sh .git/hooks/pre-commit
 
 test: init
 	@NODE_ENV=test ./node_modules/mocha/bin/mocha \
